@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import {
   Image,
   KeyboardAvoidingView,
@@ -32,9 +33,7 @@ export default function Login({ navigation }) {
       <ScrollView style={{ marginHorizontal: 10 }}>
         <View style={styles.column_center}>
         <Spacer h={100} />
-          <Text style={{ fontSize: 20 }}>ICRIB Agent Login</Text>
-            <Spacer h={20} />
-          <Text style={{ fontSize: 10 }}>The Future of Housing</Text>
+          <Text style={{ fontSize: 20, fontWeight: "bold" }}>Welcome</Text>
         </View>
         <Spacer h={100} />
         <Text style={{ fontWeight: "bold" }}>Username</Text>
