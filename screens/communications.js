@@ -4,18 +4,24 @@ import {
     StyleSheet,
     Text,
     TouchableOpacity,
+    TextInput,
+    KeyboardAvoidingView,
+    Platform,
     View,
-} from "react-native";
-
-import { linkColor, primaryColor, styles } from "../styles/main";
-import { Spacer } from "../components/spacer";
-
-
-export default function Home({ navigation }) {
-
-
+  } from "react-native";
+  
+  import { linkColor,accentColor, primaryColor, styles } from "../styles/main";
+  import { Spacer } from "../components/spacer";
+  
+  
+  export default function Home({ navigation }) {
+  
+  
     return (
-        <SafeAreaView style={styles.container}>
+       <KeyboardAvoidingView
+        behavior={Platform.OS == "ios" ? "padding" : "height"}
+        style={styles.container}
+      > 
             <ScrollView
                 style={{ paddingHorizontal: 10, backgroundColor: primaryColor }}
                 alwaysBounceVertical={true}
@@ -25,15 +31,15 @@ export default function Home({ navigation }) {
                 <View style={comStyles.header}>
                     <Text style={comStyles.headerText}>COMMUNICATE</Text>
                 </View>
-
+  
                 <Spacer h={20} />
                 <Text style={{ fontWeight: "bold" }}>1. Send SMS to all tenants</Text>
                 <TextInput
                     keyboardType="default"
                     textContentType="familyName"
-                    numberOfLines={10}
+                    numberOfLines={5}
                     multiline={true}
-                    style={styles.textinput}
+                    style={comStyles.textInput}
                 />
                 <TouchableOpacity
                     style={styles.formButton}
@@ -41,14 +47,14 @@ export default function Home({ navigation }) {
                     <Text style={styles.formButtonText}>send</Text>
                 </TouchableOpacity>
                 <Spacer h={20} />
-                <Text style={{ fontWeight: "bold" }}>Send SMS to Paid Tenants</Text>
+                <Text style={{ fontWeight: "bold" }}>2. Send SMS to Paid Tenants</Text>
                 <TextInput
                    
                     keyboardType="default"
                     textContentType="familyName"
-                    numberOfLines={10}
+                    numberOfLines={5}
                     multiline={true}
-                    style={styles.textinput}
+                    style={comStyles.textInput}
                 />
                 <TouchableOpacity
                     style={styles.formButton}
@@ -60,25 +66,25 @@ export default function Home({ navigation }) {
                 <TextInput
                     keyboardType="default"
                     textContentType="familyName"
-                    numberOfLines={10}
+                    numberOfLines={5}
                     multiline={true}
-                    style={styles.textinput}
+                    style={comStyles.textInput}
                 />
                 <TouchableOpacity
                     style={styles.formButton}
                 >
                     <Text style={styles.formButtonText}>send</Text>
                 </TouchableOpacity>
-
+                <Spacer h={40} />
             </ScrollView>
-        </SafeAreaView>
+        </KeyboardAvoidingView>
     );
-}
-
-const comStyles = StyleSheet.create({
+  }
+  
+  const comStyles = StyleSheet.create({
     header: {
         flexDirection: "row",
-        justifyContent: "flex-end",
+        justifyContent: "center",
         padding: 10,
         backgroundColor: primaryColor,
     },
@@ -93,16 +99,15 @@ const comStyles = StyleSheet.create({
         fontSize: 16,
         fontWeight: "500",
     },
-});
-
-const inputStyles = StyleSheet.create({
-    textAreaContainer: {
-        borderColor: COLORS.grey20,
-        borderWidth: 1,
-        padding: 5
-    },
-    textArea: {
-        height: 150,
-        justifyContent: "flex-start"
+    textInput: {
+      borderWidth: 1,
+      marginVertical: 10,
+      padding: 5,
+      borderRadius: 10,
+      backgroundColor: accentColor,
+      borderColor: linkColor,
+      color: "black",
     }
-})
+  });
+  
+  
