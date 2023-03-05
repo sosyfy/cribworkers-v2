@@ -1,64 +1,108 @@
-import { useState } from "react";
-
 import {
-  Image,
-  KeyboardAvoidingView,
-  Platform,
+  SafeAreaView,
   ScrollView,
+  StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
+
+import { linkColor, primaryColor, styles } from "../styles/main";
 import { Spacer } from "../components/spacer";
-import { styles } from "../styles/main";
 
-export default function Login({ navigation }) {
-  const [phone, setPhone] = useState("");
-  const [pin, setPin] = useState("");
 
-  async function LoginWorker() {
-    navigation.navigate("Home");
-  }
+export default function Home({ navigation }) {
+
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS == "ios" ? "padding" : "height"}
-      style={styles.container}
-    >
-      <ScrollView style={{ marginHorizontal: 10 }}>
-        <View style={styles.column_center}>
-        <Spacer h={100} />
-          <Text style={{ fontSize: 30, fontWeight: "bold",  }}>Welcome</Text>
-        </View>
-        <Spacer h={100} />
-        <Text style={{ fontWeight: "bold" }}>Username</Text>
-        <TextInput
-          onChangeText={(e) => setPhone(e)}
-          value={phone}
-          placeholder="Enter UserName"
-          keyboardType="default"
-          textContentType="familyName"
-          style={styles.textinput}
-        />
-        <Spacer h={10} />
-        <Text style={{ fontWeight: "bold" }}>Password</Text>
-        <TextInput
-          onChangeText={(e) => setPin(e)}
-          value={pin}
-          placeholder="Enter account passowrd"
-          textContentType="password"
-          keyboardType="numeric"
-          style={styles.textinput}
-          maxLength={4}
-        />
-        <TouchableOpacity
-          onPress={() => LoginWorker()}
-          style={styles.formButton}
-        >
-          <Text style={styles.formButtonText}>Login</Text>
-        </TouchableOpacity>
-      </ScrollView>
-    </KeyboardAvoidingView>
+      <SafeAreaView style={styles.container}>
+          <ScrollView
+              style={{ paddingHorizontal: 10, backgroundColor: primaryColor }}
+              alwaysBounceVertical={true}
+              horizontal={false}
+              showsVerticalScrollIndicator={false}
+          >
+              <View style={comStyles.header}>
+                  <Text style={comStyles.headerText}>COMMUNICATE</Text>
+              </View>
+
+              <Spacer h={20} />
+              <Text style={{ fontWeight: "bold" }}>1. Send SMS to all tenants</Text>
+              <TextInput
+                  keyboardType="default"
+                  textContentType="familyName"
+                  numberOfLines={10}
+                  multiline={true}
+                  style={styles.textinput}
+              />
+              <TouchableOpacity
+                  style={styles.formButton}
+              >
+                  <Text style={styles.formButtonText}>send</Text>
+              </TouchableOpacity>
+              <Spacer h={20} />
+              <Text style={{ fontWeight: "bold" }}>Send SMS to Paid Tenants</Text>
+              <TextInput
+                 
+                  keyboardType="default"
+                  textContentType="familyName"
+                  numberOfLines={10}
+                  multiline={true}
+                  style={styles.textinput}
+              />
+              <TouchableOpacity
+                  style={styles.formButton}
+              >
+                  <Text style={styles.formButtonText}>send</Text>
+              </TouchableOpacity>
+              <Spacer h={20} />
+              <Text style={{ fontWeight: "bold" }}>3. Send SMS to Due tenants</Text>
+              <TextInput
+                  keyboardType="default"
+                  textContentType="familyName"
+                  numberOfLines={10}
+                  multiline={true}
+                  style={styles.textinput}
+              />
+              <TouchableOpacity
+                  style={styles.formButton}
+              >
+                  <Text style={styles.formButtonText}>send</Text>
+              </TouchableOpacity>
+
+          </ScrollView>
+      </SafeAreaView>
   );
 }
+
+const comStyles = StyleSheet.create({
+  header: {
+      flexDirection: "row",
+      justifyContent: "flex-end",
+      padding: 10,
+      backgroundColor: primaryColor,
+  },
+  headerText: {
+      fontSize: 20,
+      color: "black",
+      fontWeight: "500",
+      marginHorizontal: "auto",
+  },
+  linkTitle: {
+      color: linkColor,
+      fontSize: 16,
+      fontWeight: "500",
+  },
+});
+
+const inputStyles = StyleSheet.create({
+  textAreaContainer: {
+      borderColor: COLORS.grey20,
+      borderWidth: 1,
+      padding: 5
+  },
+  textArea: {
+      height: 150,
+      justifyContent: "flex-start"
+  }
+})
