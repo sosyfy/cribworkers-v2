@@ -5,16 +5,16 @@ import {
     Text,
     View,
 } from "react-native";
-import { useRef, useState } from "react";
-import { accentColor, lightGrey, primaryColor, styles } from "../styles/main";
+import { lightGrey, primaryColor, styles } from "../styles/main";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Spacer } from "../components/spacer";
 import { HapticButton } from "../components/hepaticButton";
 
+
 export default function Home({ navigation }) {
 
     async function houseWorker() {
-        navigation.navigate("Home");
+        navigation.navigate("Dashboard");
     }
     return (
         <SafeAreaView style={styles.container}>
@@ -31,7 +31,7 @@ export default function Home({ navigation }) {
 
 
                 <View style={homeStyles.row}>
-                <HapticButton style={homeStyles.houseContainer} onPress={houseWorker}>
+                    <HapticButton style={homeStyles.houseContainer} onPress={houseWorker}>
                         <View style={homeStyles.divider}></View>
                         <View style={homeStyles.house}>
                             <MaterialIcons name="home" style={homeStyles.homeIcon} />
