@@ -5,6 +5,7 @@ import Dashboard from "./screens/dashboard"
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Services from "./screens/services";
+import Manage from "./screens/manage";
 
 
 const Stack = createNativeStackNavigator();
@@ -16,7 +17,8 @@ function App() {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Dashboard" component={Dashboard} />
-        {/* <Stack.Screen name="Services" component={Services} /> */}
+        <Stack.Screen name="Services" component={Services} />
+        <Stack.Screen name="Manage" component={Manage} />
       </Stack.Navigator>
     </NavigationContainer>
   );

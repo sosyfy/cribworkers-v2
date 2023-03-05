@@ -1,16 +1,40 @@
 import {
     SafeAreaView,
     ScrollView,
+    TouchableOpacity,
+    Dimensions,
     StyleSheet,
     Text,
     View,
 } from "react-native";
+import { PieChart } from "react-native-chart-kit";
 
-import { accentColor, linkColor, primaryColor, styles } from "../styles/main";
+
+import { linkColor, accentColor, primaryColor, styles } from "../styles/main";
 import { Spacer } from "../components/spacer";
+import CollectionProgressCard from '../components/collectionsCard';
+
+const screenWidth = Dimensions.get("window").width;
+const data = [
+    {
+        name: "PAID",
+        population: 21500000,
+        color: "rgba(131, 167, 234, 1)",
+        legendFontColor: "#7F7F7F",
+        legendFontSize: 15
+    },
+
+    {
+        name: "DUE",
+        population: 11920000,
+        color: "rgb(0, 0, 255)",
+        legendFontColor: "#7F7F7F",
+        legendFontSize: 15
+    }
+];
 
 
-export default function Dashboard({ navigation }) {
+export default function Dashboard() {
     let usename = "Oliver"
     return (
         <SafeAreaView style={styles.container}>
@@ -24,63 +48,67 @@ export default function Dashboard({ navigation }) {
                     <Text style={dashboardStyles.headerText}>Welcome: {usename}</Text>
                 </View>
                 <Spacer h={20} />
-            
+                <CollectionProgressCard
+                    collected={'40,000'}
+                />
+                <Spacer h={20} />
+                <Text style={{
+                    fontSize: 20,
+                    color: "black",
+                    fontWeight: "500",
+                    marginRight: "auto",
+                }}>SUMMARY</Text>
+                <Spacer h={10} />
+                <view>
+                    <PieChart
+                        data={data}
+                        width={screenWidth}
+                        height={130}
+                        // chartConfig={chartConfig}
+                        accessor={"population"}
+                        backgroundColor={"transparent"}
+                        paddingLeft={"15"}
+                        center={[10, 50]}
+                        absolute
+                    />
 
-                <View style={[styles.float, dashboardStyles.row]}>
-                    <View style={dashboardStyles.card}>
-                        <Text style={dashboardStyles.cardText}>Total Tenants</Text>
-                        <Text style={dashboardStyles.subtext}>300</Text>
-                    </View>
-                    <View style={dashboardStyles.middleLine}></View>
-                    <View style={dashboardStyles.card}>
-                        <Text style={dashboardStyles.cardText}>Vaccant Houses</Text>
-                        <Text style={dashboardStyles.subtext}> 12</Text>
-                    </View>
+                </view>
+                <Spacer h={10} />
+                <Text style={{
+                    fontSize: 20,
+                    color: "black",
+                    fontWeight: "500",
+                    marginRight: "auto",
+                }}>Filter</Text>
+                <View style={actionStyles.actionView}>
+                    <TouchableOpacity style={actionStyles.action}>
+                        <Text style={actionStyles.actionText}>View Tenants</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={actionStyles.action}>
+                        <Text style={actionStyles.actionText}>View Tenants</Text>
+                    </TouchableOpacity>
                 </View>
-                <Spacer h={8} />
-                
-                <View style={[styles.float, dashboardStyles.row]}>
-                    <View>
-                        <Text>Total Tenants</Text>
-                        <Text>300</Text>
-                    </View>
-                    <View>
-                        <Text>Vaccant Houses</Text>
-                        <Text> 12</Text>
-                    </View>
-                </View>
-                <Spacer h={8} />
-                <View style={[styles.float, dashboardStyles.row]}>
-                    <View>
-                        <Text>Total Tenants</Text>
-                        <Text>300</Text>
-                    </View>
-                    <View>
-                        <Text>Vaccant Houses</Text>
-                        <Text> 12</Text>
-                    </View>
-                </View>
-
             </ScrollView>
         </SafeAreaView>
-
     );
 }
 
 const dashboardStyles = StyleSheet.create({
     row: {
-        padding: 20,
-        borderRadius: 25,
-        margin: 8,
-        flexDirection: "row",
-        backgroundColor: "white",
-        position: 'relative'
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: "center",
+        justifyContent: 'space-around',
+        padding: 8,
+        flexWrap: 'wrap',
     },
     card: {
-        flex: 1,
+        flexBasis: "45%",
         justifyContent: "center",
         alignItems: 'center',
-        height: 100,
+        height: 150,
+        padding: 20,
+        margin: 8,
         borderRadius: 25,
         backgroundColor: "white",
     },
@@ -89,22 +117,8 @@ const dashboardStyles = StyleSheet.create({
         fontSize: 20,
         marginTop: 5,
         marginBottom: 5,
-        fontWeight: "500",
-        textAlign: "center"
-    },
-    subtext: {
-        fontSize: 30,
-        marginTop: 5,
-        marginBottom: 5,
         fontWeight: "bold",
         textAlign: "center"
-    },
-    middleLine: {
-        position: 'absolute',
-        top: 0,
-        bottom: 0,
-        width: 1,
-        backgroundColor: 'grey'
     },
     header: {
         flexDirection: "row",
@@ -126,32 +140,29 @@ const dashboardStyles = StyleSheet.create({
 });
 
 
-const transactionstyles = StyleSheet.create({
-    transactionView: {
-      padding: 20,
-      backgroundColor: primaryColor,
-      flex: 1,
+
+
+const actionStyles = StyleSheet.create({
+    actionView: {
+        flexDirection: "row",
+        justifyContent: "flex-start",
+        padding: 10,
+        margin: 8,
+        marginRight: "auto"
     },
-    transactionTab: {
-      backgroundColor: primaryColor,
-      flex: 1,
+    action: {
+        textAlign: 'center',
     },
-    tabBarLabelStyle: {
-      fontSize: 15,
-      paddingVertical: 0,
-      fontWeight: "500",
-      textTransform: "capitalize",
+    actionText: {
+        backgroundColor: accentColor,
+        padding: 10,
+        color: linkColor,
+        fontSize: 16,
+        fontWeight: "500",
+        textAlign: 'center',
     },
-    tabBarLabel: {
-      backgroundColor: accentColor,
-      borderRadius: 50,
-    },
-    tabBarIndicatorStyle: {
-      backgroundColor: "#fff",
-      height: "84%",
-      bottom: "8%",
-      left: "1.5%",
-      borderRadius: 20,
-      width: "47%",
-    },
-  });
+
+});
+
+
+
