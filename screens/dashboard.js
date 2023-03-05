@@ -6,16 +6,16 @@ import {
     StyleSheet,
     Text,
     View,
-} from "react-native";
-import { PieChart } from "react-native-chart-kit";
-
-
-import { linkColor, accentColor, primaryColor, styles } from "../styles/main";
-import { Spacer } from "../components/spacer";
-import CollectionProgressCard from '../components/collectionsCard';
-
-const screenWidth = Dimensions.get("window").width;
-const data = [
+  } from "react-native";
+  import { PieChart } from "react-native-chart-kit";
+  
+  
+  import { linkColor, accentColor, primaryColor, styles } from "../styles/main";
+  import { Spacer } from "../components/spacer";
+  import CollectionProgressCard from '../components/collectionsCard';
+  
+  const screenWidth = Dimensions.get("window").width;
+  const data = [
     {
         name: "PAID",
         population: 21500000,
@@ -23,7 +23,7 @@ const data = [
         legendFontColor: "#7F7F7F",
         legendFontSize: 15
     },
-
+  
     {
         name: "DUE",
         population: 11920000,
@@ -31,10 +31,10 @@ const data = [
         legendFontColor: "#7F7F7F",
         legendFontSize: 15
     }
-];
-
-
-export default function Dashboard() {
+  ];
+  
+  
+  export default function Dashboard() {
     let usename = "Oliver"
     return (
         <SafeAreaView style={styles.container}>
@@ -71,7 +71,7 @@ export default function Dashboard() {
                         center={[10, 50]}
                         absolute
                     />
-
+  
                 </view>
                 <Spacer h={10} />
                 <Text style={{
@@ -91,9 +91,9 @@ export default function Dashboard() {
             </ScrollView>
         </SafeAreaView>
     );
-}
-
-const dashboardStyles = StyleSheet.create({
+  }
+  
+  const dashboardStyles = StyleSheet.create({
     row: {
         flex: 1,
         flexDirection: 'row',
@@ -112,7 +112,7 @@ const dashboardStyles = StyleSheet.create({
         borderRadius: 25,
         backgroundColor: "white",
     },
-
+  
     cardText: {
         fontSize: 20,
         marginTop: 5,
@@ -137,12 +137,12 @@ const dashboardStyles = StyleSheet.create({
         fontSize: 16,
         fontWeight: "500",
     },
-});
-
-
-
-
-const actionStyles = StyleSheet.create({
+  });
+  
+  
+  
+  
+  const actionStyles = StyleSheet.create({
     actionView: {
         flexDirection: "row",
         justifyContent: "flex-start",
@@ -161,8 +161,9 @@ const actionStyles = StyleSheet.create({
         fontWeight: "500",
         textAlign: 'center',
     },
-
-});
-
-
-
+  
+  });
+  
+  
+  
+  
